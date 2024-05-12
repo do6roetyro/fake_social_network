@@ -6,10 +6,12 @@ const MyPosts = () => {
     <div className="my_posts">
       My Posts
       <div className="new_post">
-        New Post
+        <p>New Post</p> 
+        <textarea name="" id="" cols="30" rows="3"></textarea>
+        <button>add post</button>
       </div>
-     <Post />
-     <Post />
+     <Post message='hi, whatsuuuup' likeCount='15' dislikeCount='2'/>
+     <Post message="it's my first project" likeCount='20' dislikeCount='2'/>
     </div>
   )
 }
