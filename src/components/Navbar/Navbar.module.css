@@ -1,0 +1,9 @@
+.nav {
+  grid-area: main-nav;
+  background-color: #8fe2f7;
+}
+
+.link {
+  color: #eeeeee;
+  text-decoration: none;
+}

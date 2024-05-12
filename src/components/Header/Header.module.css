@@ -1,0 +1,7 @@
+.header {
+  grid-area: main-header;
+}
+
+.image {
+  width: auto;
+}
