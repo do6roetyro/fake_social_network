@@ -1,0 +1,7 @@
+.profile {
+  grid-area: main-profile;
+}
+
+.content {
+  display: flex;
+}
