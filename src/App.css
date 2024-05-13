@@ -1,5 +1,5 @@
-.app-wrapper {
-  display:  grid;
+.app_wrapper {
+  display: grid;
   width: 1200px;
   margin: 0 auto;
 
@@ -7,11 +7,10 @@
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
   grid-template-areas:
-  "main-header main-header"
-  "main-nav main-profile"
-  ;
+    "main-header main-header"
+    "main-nav main-container";
 }
 
-
-
-
+.app_wrapper_content {
+  grid-area: main-container;
+}
