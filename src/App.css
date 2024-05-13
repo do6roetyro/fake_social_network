@@ -13,4 +13,6 @@
 
 .app_wrapper_content {
   grid-area: main-container;
+
+  background-color: #e67;
 }
