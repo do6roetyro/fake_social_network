@@ -1,23 +1,27 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import style from './Navbar.module.css'
 
 const NavBar = () => {
+  const checkActiveClass = (isActive) => isActive ? `${style.link} ${style.link_active}` : style.link;
+
   return (
     <nav className={style.nav}>
       <div className={style.item}>
-        <a href='/profile' className={style.link}>Profile</a>
+        <NavLink to='/profile' className={({ isActive }) => checkActiveClass(isActive)}>Profile</NavLink>
+     
+     </div>
+      <div className={style.item}>
+        <NavLink to='/dialogs' className={({ isActive }) => checkActiveClass(isActive)}>Dialogs</NavLink>
       </div>
       <div className={style.item}>
-        <a href='/dialogs' className={style.link}>Dialogs</a>
+        <NavLink to='/news' className={({ isActive }) => checkActiveClass(isActive)}>News</NavLink>
       </div>
       <div className={style.item}>
-        <a href='/news' className={style.link}>News</a>
+        <NavLink to='/music' className={({ isActive }) => checkActiveClass(isActive)}>Music</NavLink>
       </div>
       <div className={style.item}>
-        <a href='/music' className={style.link}>Music</a>
-      </div>
-      <div className={style.item}>
-        <a href='/settings' className={style.link}>Settings</a>
+        <NavLink to='/settings' className={({ isActive }) => checkActiveClass(isActive)}>Settings</NavLink>
       </div>
     </nav>
   )

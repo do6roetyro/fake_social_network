@@ -1,9 +1,15 @@
 .nav {
   grid-area: main-nav;
   background-color: #66ff;
+  padding: 1rem;
 }
 
 .link {
   color: #eeeeee;
   text-decoration: none;
+}
+
+.link_active {
+  color: gold;
+  
 }
