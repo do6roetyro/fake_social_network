@@ -2,10 +2,11 @@
   display: grid;
   width: 1200px;
   margin: 0 auto;
+  padding: 1rem;
 
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  grid-gap: 1.5rem;
   grid-template-areas:
     "main-header main-header"
     "main-nav main-container";
@@ -13,6 +14,7 @@
 
 .app_wrapper_content {
   grid-area: main-container;
-
-  background-color: #e67;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #7D7F7D;
+  background-color: #E5E4E2;
 }

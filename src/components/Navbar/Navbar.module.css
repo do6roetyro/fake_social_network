@@ -1,7 +1,8 @@
 .nav {
   grid-area: main-nav;
-  background-color: #66ff;
+  background-color:  #5D76CB;
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .link {

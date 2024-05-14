@@ -1,7 +1,29 @@
-.profile {
-  grid-area: main-profile;
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: 
+  "dialogs messages"
+  ;
 }
 
-.content {
-  display: flex;
+.dialogs_list {
+  grid-area: dialogs;
+  list-style-type: none;
+}
+
+.dialog_item {
+  padding: 0.5rem;
+}
+
+.messages_list {
+  grid-area: messages;
+  list-style-type: none;
+}
+
+.message {
+  padding: 0.5rem;
+}
+
+.active {
+  color:  #1560BD;
 }

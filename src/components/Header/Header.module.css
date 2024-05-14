@@ -1,7 +1,13 @@
 .header {
   grid-area: main-header;
-  background-color: #f84;
+  background-color: #ABCDEF;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #42AAFF;
+  height: fit-content;
+  display: flex;
+  align-items: center;
 }
+
 
 .image {
   width: auto;
