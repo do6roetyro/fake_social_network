@@ -22,7 +22,6 @@ const ProfileInfo = () => {
             <ProfilePersonalDataItem personalData="City: SPB" />
             <ProfilePersonalDataItem personalData="Education: MGTU'16" />
             <ProfilePersonalDataItem personalData="Web Site: https://it-cool.com" />
-
           </ul>
         </div>
       </div>

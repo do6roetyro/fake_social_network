@@ -20,13 +20,26 @@ const Message = (props) => {
 }
 
 const Dialogs = () => {
+
+  let dialogsData = [
+    { id: 1, name: 'Alex' },
+    { id: 2, name: 'Boris' },
+    { id: 3, name: 'Helena' },
+    { id: 4, name: 'John' },
+  ];
+
+  let messagesData = [
+    { id: 1, message: "Hello" },
+    { id: 2, message: "Hello, how are you?" },
+    { id: 3, message: "I'm fine, and you?" },
+  ];
+
+
   return (
 
     <div className={style.dialogs}>
       <ul className={style.dialogs_list}>
-        {/* <li className={`${style.dialog_item} ${style.active}`}>
-          <NavLink to="/dialogs/1">Alex</NavLink>
-        </li> */}
+
         <DialogItem name='Alex' id='1' />
         <DialogItem name='Boris' id='2' />
         <DialogItem name='Helena' id='3' />
@@ -42,3 +55,7 @@ const Dialogs = () => {
 }
 
 export default Dialogs;
+
+{/* <li className={`${style.dialog_item} ${style.active}`}>
+          <NavLink to="/dialogs/1">Alex</NavLink>
+        </li> */}
