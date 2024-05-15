@@ -1,7 +1,7 @@
-.profile {
-  grid-area: main-profile;
-}
-
-.content {
+.post_input {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: fit-content;
+  padding-bottom: 1rem;
 }

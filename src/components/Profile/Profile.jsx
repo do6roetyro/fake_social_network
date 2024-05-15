@@ -1,25 +1,12 @@
 import React from "react";
 import style from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
   return (
     <div className={style.main_container}>
-      <div className="header">
-        <img className="image" src='https://htmlbook.ru/files/images/layout2/6-05.png'></img>
-      </div>
-      <div className={style.content}>
-        <img className="avatar" src='https://i.pinimg.com/236x/ed/94/cb/ed94cbea986e07e2d4c6d11fb614ceb9.jpg'></img>
-        <div className="user_container">
-          <p className="user_name">Alexey M.</p>
-          <ul className="user_info_list">
-            <li className="user_info_item">Date of Birth: 21 march</li>
-            <li className="user_info_item">City: SPB</li>
-            <li className="user_info_item">Education: MGTU'16</li>
-            <li className="user_info_item">Web Site: https://it-cool.com</li>
-          </ul>
-        </div>
-      </div>
+      <ProfileInfo />
       <MyPosts />
     </div>
   )

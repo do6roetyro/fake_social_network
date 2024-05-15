@@ -1,0 +1,15 @@
+.header {
+}
+
+.image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 200px;
+  object-position: bottom;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
+}
