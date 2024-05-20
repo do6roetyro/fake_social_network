@@ -1,13 +1,17 @@
 import React from "react";
-import style from './ProfileInfo.module.css'
+import style from './ProfileInfo.module.css';
+import ProfilePersonalDataItem from "./ProfilePersonalDataItem/ProfilePersonalDataItem";
 
-const ProfilePersonalDataItem = (props) => {
-  return (
-    <li className={style.user_item}>{props.personalData}</li>
-  )
-}
+const ProfileInfo = (props) => {
+  // const personalInfos = [
+  //   { id: 1, personalinfo: "Date of Birth: 21 march" },
+  //   { id: 2, personalinfo: "City: SPB" },
+  //   { id: 3, personalinfo: "Education: MGTU'16" },
+  //   { id: 4, personalinfo: "Web Site: https://it-cool.com" },
+  // ]
 
-const ProfileInfo = () => {
+  const personalInfoElement = props.personalInfos.map((info => <ProfilePersonalDataItem personalData={info.personalinfo} key={info.id} />))
+
   return (
     <>
       <div className={style.header}>
@@ -18,10 +22,7 @@ const ProfileInfo = () => {
         <div className={style.container}>
           <p className={style.user_name}>Alexey M.</p>
           <ul className={style.user_list}>
-            <ProfilePersonalDataItem personalData="Date of Birth: 21 march" />
-            <ProfilePersonalDataItem personalData="City: SPB" />
-            <ProfilePersonalDataItem personalData="Education: MGTU'16" />
-            <ProfilePersonalDataItem personalData="Web Site: https://it-cool.com" />
+            { personalInfoElement }
           </ul>
         </div>
       </div>

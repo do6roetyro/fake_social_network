@@ -11,19 +11,7 @@
   list-style-type: none;
 }
 
-.dialog_item {
-  padding: 0.5rem;
-}
-
 .messages_list {
   grid-area: messages;
   list-style-type: none;
-}
-
-.message {
-  padding: 0.5rem;
-}
-
-.active {
-  color:  #1560BD;
 }

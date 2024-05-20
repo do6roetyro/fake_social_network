@@ -1,16 +1,9 @@
 import style from './MyPosts.module.css'
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-  let postsData = [
-    { id: 1, 
-      postMessage: "hi, whatsuuuup", 
-      likeCount: 15 },
-    { id: 2, 
-      postMessage: "it's my first project", 
-      likeCount: 20 },
-  ];
+  let postsElements = props.posts.map(post => <Post message={post.postMessage} likeCount={post.likeCount} />)
 
   return (
     <div className="my_posts">
@@ -22,8 +15,7 @@ const MyPosts = () => {
           <button >add post</button>
         </div>
       </div>
-      <Post message={postsData[0].postMessage} likeCount={postsData[0].likeCount} />
-      <Post message={postsData[1].postMessage} likeCount={postsData[1].likeCount} />
+      {postsElements}
     </div>
   )
 }
