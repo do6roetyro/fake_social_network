@@ -9,9 +9,20 @@
 .dialogs_list {
   grid-area: dialogs;
   list-style-type: none;
+  padding: 0;
 }
 
 .messages_list {
   grid-area: messages;
   list-style-type: none;
+  padding: 0;
+}
+
+.button {
+  display: block;
+}
+
+.textarea {
+  display: block;
+  margin-bottom: 1rem;
 }
