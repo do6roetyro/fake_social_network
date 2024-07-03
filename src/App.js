@@ -10,29 +10,29 @@ import Settings from "./components/Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 
 function App(props) {
-
+ 
   return (
     <div className="app_wrapper">
       <Header />
-      <Navbar state={props.state.siteBar} />
+      <Navbar store={props.state.siteBar} />
       <div className="app_wrapper_content">
         <Routes>
           <Route
             path="/profile"
             element={
-              <Profile 
-              profilePage={props.state.profilePage} 
-              addPost={props.addPost} 
-              updateNewPostText={props.updateNewPostText} />
+              <Profile
+                profilePage={props.state.profilePage}
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText} />
             }
           />
           <Route
             path="/dialogs/*"
             element={
-              <Dialogs 
-              dialogsPage={props.state.dialogsPage} 
-              addNewMessage={props.addNewMessage} 
-              updateNewMessageText={props.updateNewMessageText} />
+              <Dialogs
+                dialogsPage={props.state.dialogsPage}
+                addNewMessage={props.addNewMessage}
+                updateNewMessageText={props.updateNewMessageText} />
             }
           />
           <Route path="/news" element={<News />} />

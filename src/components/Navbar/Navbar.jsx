@@ -4,7 +4,6 @@ import Friends from "./Friends/Friends";
 import style from "./Navbar.module.css";
 
 const NavBar = (props) => {
-
   const checkActiveClass = (isActive) =>
     isActive ? `${style.link} ${style.link_active}` : style.link;
 
@@ -51,7 +50,7 @@ const NavBar = (props) => {
         </NavLink>
       </div>
       <div className={style.item}>
-        <Friends friends={props.state}/>
+        <Friends friends={props.store}/>
       </div>
     </nav>
   );

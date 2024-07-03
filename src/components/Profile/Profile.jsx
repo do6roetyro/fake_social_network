@@ -4,6 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
+ 
   return (
     <div className={style.main_container}>
       <ProfileInfo personalInfos={props.profilePage.personalInfos} />
