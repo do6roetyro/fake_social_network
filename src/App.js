@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 
 function App(props) {
- 
+
   return (
     <div className="app_wrapper">
       <Header />
@@ -22,8 +22,8 @@ function App(props) {
             element={
               <Profile
                 profilePage={props.state.profilePage}
-                addPost={props.addPost}
-                updateNewPostText={props.updateNewPostText} />
+                dispatch={props.dispatch}
+              />
             }
           />
           <Route
@@ -31,8 +31,7 @@ function App(props) {
             element={
               <Dialogs
                 dialogsPage={props.state.dialogsPage}
-                addNewMessage={props.addNewMessage}
-                updateNewMessageText={props.updateNewMessageText} />
+                dispatch={props.dispatch} />
             }
           />
           <Route path="/news" element={<News />} />

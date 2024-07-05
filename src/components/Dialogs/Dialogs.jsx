@@ -4,7 +4,6 @@ import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 
 const Dialogs = (props) => {
-  
   let dialogsElements = props.dialogsPage.dialogs.map((dialog) => (
     <DialogItem name={dialog.name} key={dialog.id} />
   ));
@@ -15,12 +14,16 @@ const Dialogs = (props) => {
   const newMessageElement = createRef();
 
   let addMessage = () => {
-    props.addNewMessage();
+    props.dispatch({ type: "ADD-NEW-MESSAGE" });
   };
 
   let onMessageChange = () => {
     let text = newMessageElement.current.value;
-    props.updateNewMessageText(text);
+    let action = {
+      type: "UPDATE-NEW-MESSAGE-TEXT",
+      newText: text,
+    };
+    props.dispatch(action);
   };
 
   return (

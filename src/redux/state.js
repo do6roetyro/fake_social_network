@@ -61,47 +61,52 @@ let store = {
         },
     },
 
+    _callSubscriber() {
+        console.log('state changed')
+    },
     getState() {
         return this._state;
     },
-
-    callSubscriber() {
-        console.log('state changed')
-    },
-
-    addPost() {
-        let newPost = {
-            id: this._state.profilePage.posts.length + 1,
-            postMessage: this._state.profilePage.newPostText,
-            likeCount: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state)
-    },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state)
-    },
-
-    addNewMessage() {
-        let newDialogMessage = {
-            id: this._state.dialogsPage.messages.length + 1,
-            message: this._state.dialogsPage.newDialogMessageText,
-        }
-        this._state.dialogsPage.messages.push(newDialogMessage)
-        this._state.dialogsPage.newDialogMessageText = "";
-        this._callSubscriber(this._state)
-    },
-
-    updateNewMessageText(newText) {
-        this._state.dialogsPage.newDialogMessageText = newText;
-        this._callSubscriber(this._state)
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST': {
+                let newPost = {
+                    id: this._state.profilePage.posts.length + 1,
+                    postMessage: this._state.profilePage.newPostText,
+                    likeCount: 0
+                }
+                this._state.profilePage.posts.push(newPost)
+                this._state.profilePage.newPostText = "";
+                this._callSubscriber(this._state)
+                break
+            }
+            case 'UPDATE-NEW-POST-TEXT': {
+                this._state.profilePage.newPostText = action.newText;
+                this._callSubscriber(this._state)
+                break
+            }
+            case 'ADD-NEW-MESSAGE': {
+                let newDialogMessage = {
+                    id: this._state.dialogsPage.messages.length + 1,
+                    message: this._state.dialogsPage.newDialogMessageText,
+
+                }
+                this._state.dialogsPage.messages.push(newDialogMessage)
+                this._state.dialogsPage.newDialogMessageText = "";
+                this._callSubscriber(this._state)
+                break
+            }
+            case 'UPDATE-NEW-MESSAGE-TEXT': {
+                this._state.dialogsPage.newDialogMessageText = action.newText;
+                this._callSubscriber(this._state)
+                break
+            }
+            default: break;
+        }
     }
 }
 
