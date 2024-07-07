@@ -14,7 +14,7 @@ function App(props) {
   return (
     <div className="app_wrapper">
       <Header />
-      <Navbar store={props.state.siteBar} />
+      <Navbar store={props.state.sideBar} />
       <div className="app_wrapper_content">
         <Routes>
           <Route

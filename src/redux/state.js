@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import dialogsReducer from "./dialogs_reducer";
+import profileReducer from "./profile_reducer"
+import sideBarReducer from "./sidebar_reducer";
 
 let store = {
     _state: {
@@ -41,7 +40,7 @@ let store = {
             ],
             newDialogMessageText: "hey bro"
         },
-        siteBar: {
+        sideBar: {
             friends: [
                 {
                     id: 1,
@@ -75,68 +74,10 @@ let store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST: {
-                let newPost = {
-                    id: this._state.profilePage.posts.length + 1,
-                    postMessage: this._state.profilePage.newPostText,
-                    likeCount: 0
-                }
-                this._state.profilePage.posts.push(newPost)
-                this._state.profilePage.newPostText = "";
-                this._callSubscriber(this._state)
-                break
-            }
-            case UPDATE_NEW_POST_TEXT: {
-                this._state.profilePage.newPostText = action.newText;
-                this._callSubscriber(this._state)
-                break
-            }
-            case ADD_NEW_MESSAGE: {
-                let newDialogMessage = {
-                    id: this._state.dialogsPage.messages.length + 1,
-                    message: this._state.dialogsPage.newDialogMessageText,
-
-                }
-                this._state.dialogsPage.messages.push(newDialogMessage)
-                this._state.dialogsPage.newDialogMessageText = "";
-                this._callSubscriber(this._state)
-                break
-            }
-            case UPDATE_NEW_MESSAGE_TEXT: {
-                this._state.dialogsPage.newDialogMessageText = action.newText;
-                this._callSubscriber(this._state)
-                break
-            }
-            default: break;
-        }
-    }
-}
-
-
-export let addPostActionCreator = () => {
-    return {
-        type: ADD_POST,
-    };
-};
-
-export let updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    };
-};
-
-export let addMessageActionCreator = () => {
-    return {
-        type: ADD_NEW_MESSAGE,
-    }
-}
-
-export let updateNewMessageTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newText: text,
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action);
+        this._callSubscriber(this._state);
     }
 }
 
