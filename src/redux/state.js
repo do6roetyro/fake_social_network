@@ -1,4 +1,7 @@
-
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let store = {
     _state: {
@@ -73,7 +76,7 @@ let store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST': {
+            case ADD_POST: {
                 let newPost = {
                     id: this._state.profilePage.posts.length + 1,
                     postMessage: this._state.profilePage.newPostText,
@@ -84,12 +87,12 @@ let store = {
                 this._callSubscriber(this._state)
                 break
             }
-            case 'UPDATE-NEW-POST-TEXT': {
+            case UPDATE_NEW_POST_TEXT: {
                 this._state.profilePage.newPostText = action.newText;
                 this._callSubscriber(this._state)
                 break
             }
-            case 'ADD-NEW-MESSAGE': {
+            case ADD_NEW_MESSAGE: {
                 let newDialogMessage = {
                     id: this._state.dialogsPage.messages.length + 1,
                     message: this._state.dialogsPage.newDialogMessageText,
@@ -100,13 +103,40 @@ let store = {
                 this._callSubscriber(this._state)
                 break
             }
-            case 'UPDATE-NEW-MESSAGE-TEXT': {
+            case UPDATE_NEW_MESSAGE_TEXT: {
                 this._state.dialogsPage.newDialogMessageText = action.newText;
                 this._callSubscriber(this._state)
                 break
             }
             default: break;
         }
+    }
+}
+
+
+export let addPostActionCreator = () => {
+    return {
+        type: ADD_POST,
+    };
+};
+
+export let updateNewPostTextActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text,
+    };
+};
+
+export let addMessageActionCreator = () => {
+    return {
+        type: ADD_NEW_MESSAGE,
+    }
+}
+
+export let updateNewMessageTextActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        newText: text,
     }
 }
 
