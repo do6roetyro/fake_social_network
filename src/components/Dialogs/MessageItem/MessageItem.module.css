@@ -1,3 +1,14 @@
 .message {
   padding: 0.5rem;
+  background-color: #5D86CB;
+  color: #ffffff;
+  width: fit-content;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.message:nth-child(2n) {
+  margin-left: auto;
+  background-color: #ffffff;
+  color: #5D86CB;
 }

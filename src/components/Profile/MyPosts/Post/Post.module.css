@@ -1,3 +1,14 @@
+.item {
+  margin-bottom: 1rem;
+  background-color: #5D86CB;
+  color: #ffffff;
+  width: fit-content;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
 .item .avatar {
   width: 48px;
+  border-radius: 100%;
+  margin-right: 1rem;
 }

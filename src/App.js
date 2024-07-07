@@ -10,7 +10,6 @@ import Settings from "./components/Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 
 function App(props) {
-
   return (
     <div className="app_wrapper">
       <Header />

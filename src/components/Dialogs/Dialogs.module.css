@@ -15,7 +15,9 @@
 .messages_list {
   grid-area: messages;
   list-style-type: none;
-  padding: 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(150, 192, 211, 0.536);
 }
 
 .button {
