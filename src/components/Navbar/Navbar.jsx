@@ -4,6 +4,7 @@ import Friends from "./Friends/Friends";
 import style from "./Navbar.module.css";
 
 const NavBar = (props) => {
+
   const checkActiveClass = (isActive) =>
     isActive ? `${style.link} ${style.link_active}` : style.link;
 

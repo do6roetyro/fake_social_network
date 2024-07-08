@@ -3,7 +3,7 @@ import style from "./ProfileInfo.module.css";
 import ProfilePersonalDataItem from "./ProfilePersonalDataItem/ProfilePersonalDataItem";
 
 const ProfileInfo = (props) => {
-  const personalInfoElement = props.personalInfos.map((info) => (
+  const personalInfoElement = props.ProfileInfos.map((info) => (
     <ProfilePersonalDataItem personalData={info.personalinfo} key={info.id} />
   ));
 

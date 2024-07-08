@@ -1,7 +1,29 @@
-.post_input {
+.input {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: fit-content;
   padding-bottom: 1rem;
+}
+
+.textarea {
+  display: block;
+  margin-bottom: 0.5rem;
+  border: none;
+  resize: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.button {
+  display: block;
+  border: none;
+  background-color:#5D86CB;
+  border: 2px solid #ffffff;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  width: fit-content;
+  text-transform: uppercase;
 }
