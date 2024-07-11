@@ -1,13 +1,15 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo";
+import StoreContext from "../../../storeContext";
 
-const ProfileInfoContainer = (props) => {
-  let state = props.store.getState();
-
+const ProfileInfoContainer = () => {
   return (
-    <>
-      <ProfileInfo ProfileInfos={state.profilePage.personalInfos} />
-    </>
+    <StoreContext.Consumer>
+      {(store) => {
+        let state = store.getState();
+        return <ProfileInfo ProfileInfos={state.profilePage.personalInfos} />;
+      }}
+    </StoreContext.Consumer>
   );
 };
 
