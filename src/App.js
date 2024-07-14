@@ -8,18 +8,13 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { Route, Routes } from "react-router-dom";
-import StoreContext from "./storeContext";
+import { connect } from "react-redux";
 
 function App(props) {
   return (
     <div className="app_wrapper">
       <Header />
-      <StoreContext.Consumer>
-        {(store) => {
-          let state = store.getState();
-          return (<Navbar state={state.sideBar} />)
-        }}
-      </StoreContext.Consumer>
+      <Navbar state={props.sideBar} />
       <div className="app_wrapper_content">
         <Routes>
           <Route path="/profile" element={<Profile />} />
@@ -33,4 +28,10 @@ function App(props) {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    sideBar: state.sideBar,
+  }
+}
+
+export default connect(mapStateToProps)(App);
