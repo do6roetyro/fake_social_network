@@ -13,30 +13,31 @@ let initialState = {
         { id: 3, name: 'Helena' },
         { id: 4, name: 'John' },
     ],
-    newDialogMessageText: "hey bro"
+    newDialogMessageText: ""
 }
+
+
+
+// reducer это ф. которая принимает текущий state и action и return новый state.
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE: {
-            const newState = structuredClone(state)
-            let newDialogMessage = {
-                id: state.messages.length + 1,
-                message: state.newDialogMessageText,
+            return {
+                ...state,
+                messages: [...state.messages, { id: state.messages.length + 1, message: state.newDialogMessageText }],
+                newDialogMessageText: ""
             }
-            newState.messages.push(newDialogMessage);
-            newState.newDialogMessageText = "";
-            return newState
         }
         case UPDATE_NEW_MESSAGE_TEXT: {
-            const newState = structuredClone(state)
-            newState.newDialogMessageText = action.newText;
-            return newState;
+            return {
+                ...state,
+                newDialogMessageText: action.newText
+            }
+
         }
         default: return state;
     }
-
-    return state
 }
 
 export let addMessageActionCreator = () => ({ type: ADD_NEW_MESSAGE, })

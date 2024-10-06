@@ -21,26 +21,31 @@ let initialState = {
         { id: 3, personalinfo: "Education: MGTU'16" },
         { id: 4, personalinfo: "Web Site: https://it-cool.com" },
     ],
-    newPostText: "yo yo yo"
+    newPostText: ""
 }
 
 const profileReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_POST: {
-            const newState = structuredClone(state);
-            let newPost = {
-                id: state.posts.length + 1,
-                postMessage: state.newPostText,
-                likeCount: 0
+            return {
+                ...state,
+                posts: [state.posts, {
+                    id: state.posts.length + 1,
+                    postMessage: state.newPostText,
+                    likeCount: 0
+                }],
+                newPostText: ""
             }
-            newState.posts.push(newPost);
-            newState.newPostText = "";
-            return newState;
+
         }
         case UPDATE_NEW_POST_TEXT: {
-            const newState = structuredClone(state);
-            newState.newPostText = action.newText;
-            return newState;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+
+
         }
         default: return state;
     }

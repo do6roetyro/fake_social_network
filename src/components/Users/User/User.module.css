@@ -1,0 +1,57 @@
+.item {
+   display: flex;
+   gap: 1rem;
+    
+}
+
+.avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 100%;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card {
+   flex-grow: 1;
+   border: 2px solid #5D76CB;
+   border-radius: 0.5rem;
+   padding: 1rem;
+   background-color: #f2f2f2;
+   display: grid;
+   grid-template-areas: 
+   'name location'
+   ' . location'
+   'status status'
+   ;
+}
+
+.button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    background-color: #ABCDEF;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    grid-area: "location";
+    justify-self: end;
+    text-align: end;
+}
+
+.name {
+    grid-area: 'name';
+}
+
+.status {
+    grid-area: 'status';
+}
+
+/* grid-template-areas:
+    "main-header main-header"
+    "main-nav main-container"; */
