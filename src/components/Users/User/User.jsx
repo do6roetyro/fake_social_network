@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./User.module.css";
+import userImg from "../../../assets/images/user.png"
 
 const User = (props) => {
   let onFollow = () => {
@@ -13,7 +14,7 @@ const User = (props) => {
   return (
     <div className={style.item}>
       <div className={style.container}>
-        <img className={style.avatar} src={props.avatar} alt={props.fullName} />
+        <img className={style.avatar} src={props.avatar ? props.avatar : userImg} alt={props.fullName} />
         <button
           className={style.button}
           onClick={props.isFollowed ? onUnfollow : onFollow}

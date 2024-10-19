@@ -36,4 +36,5 @@ const mapStateToProps = (state) => {
   }
 }
 
+// подключение App к Redux
 export default connect(mapStateToProps)(App);

@@ -1,9 +1,11 @@
+// хранилище для всех данных
 import { combineReducers, legacy_createStore as createStore } from "@reduxjs/toolkit";
 import profileReducer from "./profile_reducer";
 import dialogsReducer from "./dialogs_reducer";
 import sideBarReducer from "./sidebar_reducer";
 import usersReducer from "./users_reducer";
 
+// объединение нескольких редьюсеров
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
@@ -11,6 +13,7 @@ let reducers = combineReducers({
     usersPage: usersReducer, 
 });
 
+// создаем redux хранилище на основании всех редьюсеров
 let store = createStore(reducers);
 
 export default store
