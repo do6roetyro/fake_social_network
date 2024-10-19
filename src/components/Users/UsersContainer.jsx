@@ -1,7 +1,7 @@
 // контейнер берет на себя взаимодействие с redux хранилишем, извлечением необходимых данных и передача в компоненты как пропсы. Компоненты чисто рендерятся и они не парятся по поводу того откуда приходят данные и как ими управлять + переиспользуемость компонента который завернут в контейнер. Его можно использовать в других контейнерах
 
-import React from "react";
-import Users from "./Users";
+// import Users from "./Users";
+import Users_Class from "./Users_Class";
 import { followAC, setUsersAC, unfollowAC } from "../../redux/users_reducer";
 import { connect } from "react-redux";
 
@@ -32,6 +32,6 @@ let mapDispatchToProps = (dispatch) => {
 
 // connect соединяет react компонент с redux store. Она делает это, передавая данные и методы для отправки действий в виде props моему компоненту
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users_Class);
 
 export default UsersContainer;

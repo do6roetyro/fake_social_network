@@ -2,20 +2,22 @@ import React from "react";
 import style from "./Users.module.css";
 import User from "./User/User";
 import axios from "axios";
-import userImg from "../../assets/images/user.png"
 
 const Users = (props) => {
-  if (props.users.length === 0) {
-    axios.get('https://social-network.samuraijs.com/api/1.0/users')
-      .then(response => props.setUsers(response.data.items))
+
+  let getUsers = () => {
+    if (props.users.length === 0) {
+      axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        .then(response => props.setUsers(response.data.items))
+    }
   }
 
   let usersElements = props.users.map((user) => (
     <User
       fullName={user.name}
       avatar={user.photos.small}
-      location={"user.location"}
-      status={user.status}
+      location={user.location || { country: 'Unknown', city: 'Unknown' }}
+      status={user.status || "No status"}
       isFollowed={user.followed}
       key={user.id}
       id={user.id}
@@ -27,7 +29,12 @@ const Users = (props) => {
   return (
     <div className={style.main_container}>
       <h2 className={style.title}>Users</h2>
-      <div className={style.container}>{usersElements}</div>
+      <button onClick={getUsers}>
+        get users
+      </button>
+      <div className={style.container}>
+        {props.users.length > 0 ? usersElements : <p>No users to display</p>}
+      </div>
       <button className={style.button}>Show more</button>
     </div>
   );
