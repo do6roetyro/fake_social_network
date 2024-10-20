@@ -2,7 +2,7 @@
 
 // import Users from "./Users";
 import Users_Class from "./Users_Class";
-import { followAC, setUsersAC, unfollowAC } from "../../redux/users_reducer";
+import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC } from "../../redux/users_reducer";
 import { connect } from "react-redux";
 
 //  ф. для связи redux хранилища store c пропсами компонента. Она получает весь state и возвращает объект который содержит только те данные которые нужны конкретному компоненту эти пропсы потом передаются в компоненты Users
@@ -10,6 +10,10 @@ import { connect } from "react-redux";
 let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
+    totalCount: state.usersPage.totalUsersCount,
+    pageSize: state.usersPage.pageSize,
+    currentPage: state.usersPage.currentPage,
+    totalUsersCount: state.usersPage.totalUsersCount,
   };
 };
 
@@ -18,14 +22,19 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     onFollow: (userId) => {
-      debugger
-      dispatch(followAC(userId)); // диспатчим уже экшн
+      dispatch(followAC(userId)); // диспатчим вызов ActionCreator (вызов AC return action)
     },
     onUnfollow: (userId) => {
       dispatch(unfollowAC(userId));
     },
     setUsers: (users) => {
       dispatch(setUsersAC(users))
+    },
+    setCurrentPage: (pageNumber) => {
+      dispatch(setCurrentPageAC(pageNumber))
+    },
+    setTotalUsersCount: (totalUsersCount) => {
+      dispatch(setTotalUsersCountAC(totalUsersCount))
     }
   };
 };

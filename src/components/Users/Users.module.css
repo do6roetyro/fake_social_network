@@ -21,3 +21,38 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
+
+.pagination_list {
+  display: flex;
+  gap: 12px;
+ 
+}
+
+.pagination {
+  list-style-type: none;
+  text-align: center;
+  color: #ffffff;
+  background-color: #ABCDEF;
+  border-radius: 12px;
+  padding: 8px;
+  cursor: pointer;
+  width: 24px;
+}
+
+.pagination:hover {
+  opacity: 0.7;
+}
+
+.pagination_current {
+  list-style-type: none;
+  text-align: center;
+  color: #ffffff;
+  background-color: #ABCDEF;
+  outline: 2px solid #5D76CB;
+  border-radius: 12px;
+  padding: 8px;
+  cursor: pointer;
+  width: 24px;
+  font-weight: bold;
+  
+}
