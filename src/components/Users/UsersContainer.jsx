@@ -1,11 +1,39 @@
-// контейнер берет на себя взаимодействие с redux хранилишем, извлечением необходимых данных и передача в компоненты как пропсы. Компоненты чисто рендерятся и они не парятся по поводу того откуда приходят данные и как ими управлять + переиспользуемость компонента который завернут в контейнер. Его можно использовать в других контейнерах
-
-// import Users from "./Users";
-import Users_Class from "./Users_Class";
+import React from "react";
+import axios from "axios";
 import { followAC, setUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC } from "../../redux/users_reducer";
 import { connect } from "react-redux";
+import UsersPresent from "./UsersPresent";
 
-//  ф. для связи redux хранилища store c пропсами компонента. Она получает весь state и возвращает объект который содержит только те данные которые нужны конкретному компоненту эти пропсы потом передаются в компоненты Users
+class UsersAPIComponent extends React.Component {
+
+  componentDidMount() {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.setUsers(response.data.items)
+        this.props.setTotalUsersCount(40)
+      })
+  }
+
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+      .then(response => this.props.setUsers(response.data.items))
+  }
+
+  render() {
+    return <UsersPresent
+      onPageChanged={this.onPageChanged}
+      totalCount={this.props.totalUsersCount}
+      pageSize={this.props.pageSize}
+      users={this.props.users}
+      currentPage={this.props.currentPage}
+      onFollow={this.props.onFollow}
+      onUnfollow={this.props.onUnfollow}
+
+    />
+  }
+
+};
 
 let mapStateToProps = (state) => {
   return {
@@ -16,8 +44,6 @@ let mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
   };
 };
-
-//  функция связывает actions c props компонента, чтобы компонент мог отправлять dispatch эти действия в хранилище redux
 
 let mapDispatchToProps = (dispatch) => {
   return {
@@ -39,8 +65,6 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-// connect соединяет react компонент с redux store. Она делает это, передавая данные и методы для отправки действий в виде props моему компоненту
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users_Class);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
 
 export default UsersContainer;
