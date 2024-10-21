@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./ProfileInfo.module.css";
 import ProfilePersonalDataItem from "./ProfilePersonalDataItem/ProfilePersonalDataItem";
 

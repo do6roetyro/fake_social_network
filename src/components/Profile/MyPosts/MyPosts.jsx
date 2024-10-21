@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import { createRef } from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 

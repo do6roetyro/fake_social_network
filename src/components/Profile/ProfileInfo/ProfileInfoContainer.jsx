@@ -1,4 +1,3 @@
-import React from "react";
 import ProfileInfo from "./ProfileInfo";
 import { connect } from "react-redux";
 

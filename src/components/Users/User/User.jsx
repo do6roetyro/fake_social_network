@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./User.module.css";
 import userImg from "../../../assets/images/user.png"
 

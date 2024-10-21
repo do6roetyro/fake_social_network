@@ -1,6 +1,6 @@
-import React from "react";
 import style from "./Users.module.css";
 import User from "./User/User";
+import preloader from "../../assets/common/preloader.svg"
 
 const UsersPresent = (props) => {
 
@@ -26,6 +26,9 @@ const UsersPresent = (props) => {
   return (
     <div className={style.main_container}>
       <h2 className={style.title}>Users</h2>
+      {props.isFetching ? <div className={style.preloader}>
+        <img src={preloader} alt="loading" width={56} height={56}/>
+      </div>: null}
       <ol className={style.pagination_list}>
         {pagesNumbers.map((pageNumber) => {
           return <li

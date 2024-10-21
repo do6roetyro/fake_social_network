@@ -1,4 +1,3 @@
-import React from "react";
 import style from './MessageItem.module.css'
 
 const MessageItem = (props) => {
