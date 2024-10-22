@@ -1,27 +1,22 @@
 import style from "./ProfileInfo.module.css";
-import ProfilePersonalDataItem from "./ProfilePersonalDataItem/ProfilePersonalDataItem";
+import ProfileInfoCommon from "./ProfileInfoCommon";
+import UsersPreloader from "../../Common/Preloaders/UsersPreloader";
+import ProfileInfoContacts from "./ProfileInfoContacts";
 
 const ProfileInfo = (props) => {
-  const personalInfoElement = props.profileInfos.map((info) => (
-    <ProfilePersonalDataItem personalData={info.personalinfo} key={info.id} />
-  ));
-
+  if (!props.profile) {
+    return <UsersPreloader />
+  }
   return (
     <>
-      <div className={style.header}>
-        <img
-          className={style.image}
-          src="https://htmlbook.ru/files/images/layout2/6-05.png"
-        ></img>
-      </div>
       <div className={style.content}>
         <img
           className={style.avatar}
-          src="https://i.pinimg.com/236x/ed/94/cb/ed94cbea986e07e2d4c6d11fb614ceb9.jpg"
+          src={props.profile.photos.large}
         ></img>
-        <div className={style.container}>
-          <p className={style.user_name}>Alexey M.</p>
-          <ul className={style.user_list}>{personalInfoElement}</ul>
+        <div className={style.info}>
+        <ProfileInfoCommon profile={props.profile} />
+        <ProfileInfoContacts contacts={props.profile.contacts}/>
         </div>
       </div>
     </>

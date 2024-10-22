@@ -15,5 +15,5 @@ let reducers = combineReducers({
 
 // создаем redux хранилище на основании всех редьюсеров
 let store = createStore(reducers);
-
+window.store = store;
 export default store

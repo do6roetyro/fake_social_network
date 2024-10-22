@@ -1,15 +1,50 @@
-.header {
+.user_name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.image {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  height: 200px;
-  object-position: bottom;
+.avatar {
+  object-fit: contain;
+  object-position: top;
 }
+
+.about {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.about::before {
+  content: '\25A0';
+  font-size: 0.5rem;
+}
+
 
 .content {
   display: flex;
   gap: 1rem;
 }
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.list {
+list-style-type: none;
+padding: 0;
+}
+

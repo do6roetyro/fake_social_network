@@ -1,8 +1,3 @@
-// reducer это чистая ф. которая принимает текущий state, action. Модифицирует при 
-// необходимости этот state по правилам иммутабельности (через копию state) и return new state.
-
-import { act } from "react-dom/test-utils"
-
 const FOLLOW_USER = 'FOLLOW-USER'
 const UNFOLLOW_USER = 'UNFOLLOW-USER'
 const SET_USERS = 'SET-USERS'
@@ -61,12 +56,12 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userId) => ({ type: FOLLOW_USER, userId })
-export const unfollowAC = (userId) => ({ type: UNFOLLOW_USER, userId })
-export const setUsersAC = (users) => ({ type: SET_USERS, users })
-export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
-export const setTotalUsersCountAC = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
-export const toggleFetchingStateAC = (isFetching) => ({ type: TOGGLE_FETCHING_STATE, isFetching })
+export const follow = (userId) => ({ type: FOLLOW_USER, userId })
+export const unfollow = (userId) => ({ type: UNFOLLOW_USER, userId })
+export const setUsers = (users) => ({ type: SET_USERS, users })
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
+export const toggleFetchingState = (isFetching) => ({ type: TOGGLE_FETCHING_STATE, isFetching })
 
 export default usersReducer
 
