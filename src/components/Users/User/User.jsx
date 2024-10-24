@@ -14,7 +14,7 @@ const User = (props) => {
   return (
     <div className={style.item}>
       <div className={style.container}>
-        <NavLink to="/profile">
+        <NavLink to={`/profile/${props.id}`}>
           <img className={style.avatar} src={props.avatar ? props.avatar : userImg} alt={props.fullName} />
         </NavLink>
         <button
