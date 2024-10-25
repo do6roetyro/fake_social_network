@@ -8,19 +8,22 @@ class UserContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleFetchingState(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+      withCredentials: true,
+    })
       .then(response => {
         this.props.toggleFetchingState(false)
         this.props.setUsers(response.data.items)
         this.props.setTotalUsersCount(40)
-
       })
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber)
     this.props.toggleFetchingState(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+      withCredentials: true,
+    })
       .then(response => {
         this.props.setUsers(response.data.items)
         this.props.toggleFetchingState(false)
@@ -34,8 +37,8 @@ class UserContainer extends React.Component {
       pageSize={this.props.pageSize}
       users={this.props.users}
       currentPage={this.props.currentPage}
-      onFollow={this.props.onFollow}
-      onUnfollow={this.props.onUnfollow}
+      onFollow={this.props.follow}
+      onUnfollow={this.props.unfollow}
       isFetching={this.props.isFetching}
     />
   }

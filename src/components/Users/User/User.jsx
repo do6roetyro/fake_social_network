@@ -1,15 +1,16 @@
 import style from "./User.module.css";
 import userImg from "../../../assets/images/user.png"
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const User = (props) => {
-  let onFollow = () => {
-    return props.onFollow(props.id);
-  };
+  // let onFollow = () => {
+  //   return props.onFollow(props.id);
+  // };
 
-  let onUnfollow = () => {
-    return props.onUnfollow(props.id);
-  };
+  // let onUnfollow = () => {
+  //   return props.onUnfollow(props.id);
+  // };
 
   return (
     <div className={style.item}>
@@ -17,12 +18,37 @@ const User = (props) => {
         <NavLink to={`/profile/${props.id}`}>
           <img className={style.avatar} src={props.avatar ? props.avatar : userImg} alt={props.fullName} />
         </NavLink>
-        <button
+        {props.isFollowed ? <button
           className={style.button}
-          onClick={props.isFollowed ? onUnfollow : onFollow}
-        >
-          {props.isFollowed ? "Unfollow" : "Follow"}
-        </button>
+          onClick={() => {
+            // onUnfollow()
+            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+              {
+                withCredentials: true,
+                headers: { "API-KEY": "67674eff-90eb-4503-9455-b6c9a607d764" }
+              })
+              .then(response => {
+                if (response.data.resultCode === 0) {
+                  props.onUnfollow(props.id)
+                }
+              })
+          }}>Unfollow</button> :
+          <button
+            className={style.button}
+            onClick={() => {
+              // onFollow()
+              axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, null,
+                {
+                  withCredentials: true,
+                  headers: { "API-KEY": "67674eff-90eb-4503-9455-b6c9a607d764" }
+                })
+                .then(response => {
+                  if (response.data.resultCode === 0) {
+                    props.onFollow(props.id)
+                  }
+                })
+            }}>
+            Follow</button>}
       </div>
       <div className={style.card}>
         <span className={style.name}>{props.fullName}</span>
