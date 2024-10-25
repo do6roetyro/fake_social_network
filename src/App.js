@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainerAPIUrl from "./components/Profile/ProfileContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 function App(props) {
   return (
     <div className="app_wrapper">
-      <Header />
+      <HeaderContainer />
       <Navbar state={props.sideBar} />
       <div className="app_wrapper_content">
         <Routes>

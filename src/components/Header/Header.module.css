@@ -6,9 +6,23 @@
   height: fit-content;
   display: flex;
   align-items: center;
+  padding: 0 1rem;
 }
 
+.login {
+  margin-left: auto;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #42AAFF;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
 
-.image {
-  width: auto;
+.logged {
+  margin-left: auto;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #42AAFF;
 }
