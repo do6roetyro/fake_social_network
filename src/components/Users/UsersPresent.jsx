@@ -3,7 +3,7 @@ import User from "./User/User";
 import UsersPreloader from "../Common/Preloaders/UsersPreloader";
 
 const UsersPresent = (props) => {
-  
+
   let pagesCount = Math.ceil(props.totalCount / props.pageSize)
   let pagesNumbers = []
   for (let i = 1; i <= pagesCount; i++) {
@@ -20,6 +20,8 @@ const UsersPresent = (props) => {
       id={user.id}
       onFollow={props.onFollow}
       onUnfollow={props.onUnfollow}
+      togglefollowingInProgress={props.togglefollowingInProgress}
+      followingInProgress={props.followingInProgress}
     />
   ))
 

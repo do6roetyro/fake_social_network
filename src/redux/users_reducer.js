@@ -4,6 +4,7 @@ const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const TOGGLE_FETCHING_STATE = 'TOGGLE_FETCHING_STATE'
+const TOGGLE_FOLLOWING_IN_PROGRESS = 'TOGGLE_FOLLOWING_IN_PROGRESS'
 
 let initialState = {
     users: [],
@@ -11,6 +12,7 @@ let initialState = {
     pageSize: 5,
     currentPage: 1,
     isFetching: false,
+    followingInProgress: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -52,6 +54,14 @@ const usersReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+        case TOGGLE_FOLLOWING_IN_PROGRESS: {
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id !== action.userId)
+            }
+        }
         default: return state
     }
 }
@@ -62,41 +72,6 @@ export const setUsers = (users) => ({ type: SET_USERS, users })
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
 export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
 export const toggleFetchingState = (isFetching) => ({ type: TOGGLE_FETCHING_STATE, isFetching })
+export const toggleFollowingInProgress = (isFetching, userId) => ({ type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId })
 
 export default usersReducer
-
-
-
-//     {
-//         id: 1,
-//         fullName: 'Alexey M.',
-//         location: {
-//             country: 'Russia',
-//             city: 'Saint-Petersburg',
-//         },
-//         isFollowed: true,
-//         status: 'I like skateboarding',
-//         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJh01X4pOeldEaBQi2D8SQbjxLYMQJ7scOw&s'
-//     },
-//     {
-//         id: 2,
-//         fullName: 'Alice G.',
-//         location: {
-//             country: 'Japan',
-//             city: 'Tokio',
-//         },
-//         isFollowed: false,
-//         status: 'Today is rainy',
-//         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrohg9bF9kjXFjGPlv9-NENikfZ1BcUWarHA&s'
-//     },
-//     {
-//         id: 3,
-//         fullName: 'Mark F.',
-//         location: {
-//             country: 'Norway',
-//             city: 'Oslo',
-//         },
-//         isFollowed: true,
-//         status: 'Anybody playing bowling?',
-//         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRIBhfo5P7MvncVGapdKh463p-NcrxvcBSbQ&s'
-//     },

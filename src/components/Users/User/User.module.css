@@ -36,6 +36,10 @@
     cursor: pointer;
 }
 
+.button:disabled {
+    opacity: 0.2;
+}
+
 .location {
     display: flex;
     flex-direction: column;
