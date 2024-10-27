@@ -22,6 +22,7 @@ const UsersPresent = (props) => {
       onUnfollow={props.onUnfollow}
       togglefollowingInProgress={props.togglefollowingInProgress}
       followingInProgress={props.followingInProgress}
+      toggleFollowTC={props.toggleFollowTC}
     />
   ))
 

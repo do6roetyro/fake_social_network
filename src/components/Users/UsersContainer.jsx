@@ -1,29 +1,16 @@
 import React from "react";
-import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleFetchingState, toggleFollowingInProgress } from "../../redux/users_reducer";
+import { setCurrentPageAC, getUsersThunkCreator, toggleFollowThunkCreator } from "../../redux/users_reducer";
 import { connect } from "react-redux";
 import UsersPresent from "./UsersPresent";
-import { usersAPI } from "../../api/api";
 
 class UserContainer extends React.Component {
 
   componentDidMount() {
-    this.props.toggleFetchingState(true)
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-      .then(data => {
-        this.props.toggleFetchingState(false)
-        this.props.setUsers(data.items)
-        this.props.setTotalUsersCount(40)
-      })
+    this.props.getUsersTC(this.props.currentPage, this.props.pageSize)
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber)
-    this.props.toggleFetchingState(true)
-    usersAPI.getUsers(pageNumber, this.props.pageSize)
-      .then(data => {
-        this.props.setUsers(data.items)
-        this.props.toggleFetchingState(false)
-      })
+    this.props.getUsersTC(pageNumber, this.props.pageSize)
   }
 
   render() {
@@ -33,11 +20,9 @@ class UserContainer extends React.Component {
       pageSize={this.props.pageSize}
       users={this.props.users}
       currentPage={this.props.currentPage}
-      onFollow={this.props.follow}
-      onUnfollow={this.props.unfollow}
       isFetching={this.props.isFetching}
-      togglefollowingInProgress={this.props.toggleFollowingInProgress}
       followingInProgress={this.props.followingInProgress}
+      toggleFollowTC={this.props.toggleFollowTC}
     
     />
   }
@@ -55,11 +40,7 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  toggleFetchingState,
-  toggleFollowingInProgress,
+  setCurrentPageAC,
+  getUsersTC: getUsersThunkCreator,
+  toggleFollowTC: toggleFollowThunkCreator,
 })(UserContainer);
