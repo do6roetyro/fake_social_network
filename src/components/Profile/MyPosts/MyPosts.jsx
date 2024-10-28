@@ -19,9 +19,9 @@ const MyPosts = (props) => {
   };
 
   return (
-    <div className="my_posts">
-      <h3>My Posts</h3>
-      <div className="new_post">
+    <div className={style.my_posts}>
+      <h3 className={style.title}>My Posts</h3>
+      <div>
         <p>New Post</p>
         <div className={style.input}>
           <textarea
