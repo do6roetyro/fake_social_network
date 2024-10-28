@@ -34,19 +34,15 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthDataAC = ({ id, email, login }) => ({ type: SET_AUTH_DATA, id, email, login })
 export const setAuthStatusAC = (isAuth) => ({ type: SET_AUTH_STATUS, isAuth })
-export const loginThunkCreator = () => {
-    return (dispatch) => {
-        authAPI.login()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    const { id, login, email } = data.data
-                    dispatch(setAuthDataAC({ id, login, email }))
-                    dispatch(setAuthStatusAC(true))
-                }
-            })
-    }
+export const loginThunkCreator = () => (dispatch) => {
+    authAPI.login().then(data => {
+        if (data.resultCode === 0) {
+            const { id, login, email } = data.data
+            dispatch(setAuthDataAC({ id, login, email }))
+            dispatch(setAuthStatusAC(true))
+        }
+    })
 }
-
 
 export default authReducer
 

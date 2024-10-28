@@ -90,9 +90,7 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     }
 }
 
-export const toggleFollowThunkCreator = (userId, isFollowed) => {
-
-    return (dispatch) => {
+export const toggleFollowThunkCreator = (userId, isFollowed) => (dispatch) => {
         dispatch(toggleFollowingInProgressAC(true, userId))
         const apiMethod = isFollowed ? usersAPI.unfollow : usersAPI.follow
         const actionCreator = isFollowed ? approveUnfollowAC : approveFollowAC
@@ -104,6 +102,5 @@ export const toggleFollowThunkCreator = (userId, isFollowed) => {
                 }
             })
     }
-}
 
 export default usersReducer

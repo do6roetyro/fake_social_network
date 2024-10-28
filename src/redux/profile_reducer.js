@@ -58,13 +58,11 @@ const profileReducer = (state = initialState, action) => {
 export let addPostAC = () => ({ type: ADD_POST, });
 export let updateNewPostTextAC = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text, });
 export let setProfileAC = (profile) => ({ type: SET_PROFILE, profile })
-export const setProfileThunkCreator = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setProfileAC(data))
-            })
-    }
+export const setProfileThunkCreator = (userId) => (dispatch) => {
+    profileAPI.getProfile(userId).then(data => {
+        dispatch(setProfileAC(data))
+    })
 }
+
 
 export default profileReducer
