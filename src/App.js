@@ -11,7 +11,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
-import PrivateRoute from "./components/Common/PrivateRoute";
+import WithAuthNavigate from "./hoc/WithAuthNavigate";
 
 function App(props) {
   console.log(props)
@@ -22,24 +22,14 @@ function App(props) {
       <div className="app_wrapper_content">
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/profile/:userId?" element=
-            {<PrivateRoute isAuth={props.isAuth} element={<ProfileContainerAPIUrl />} />}
-          />
-          <Route path="/dialogs/*" element=
-            {<PrivateRoute isAuth={props.isAuth} element={<DialogsContainer />} />}
-          />
-          <Route path="/users" element=
-            {<PrivateRoute isAuth={props.isAuth} element={<UsersContainer />} />}
-          />
-          <Route path="/news" element=
-            {<PrivateRoute isAuth={props.isAuth} element={<News />} />}
-          />
-          <Route path="/music" element=
-            {<PrivateRoute isAuth={props.isAuth} element={<Music />} />}
-          />
-          <Route path="/settings" element=
-            {<PrivateRoute isAuth={props.isAuth} element={<Settings />} />}
-          />
+          <Route element={<WithAuthNavigate isAuth={props.isAuth} />}>
+            <Route path="/profile/:userId?" element={<ProfileContainerAPIUrl />} />
+            <Route path="/dialogs/*" element={<DialogsContainer />} />
+            <Route path="/users" element={<UsersContainer />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         </Routes>
       </div>
     </div>
